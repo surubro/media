@@ -4,46 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --accent-color: #007AFF;
+            --button-bg: rgba(255, 255, 255, 0.8);
+            --text-color: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
         .button-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            /* Adaptive columns: 2 on mobile, 3 on desktop */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 20px;
             padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
         }
 
         .square-button {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 1 / 1; /* Keeps it perfectly square */
-            background-color: #007AFF; /* Modern smartphone blue */
-            color: white;
+            aspect-ratio: 1 / 1;
+            background: var(--button-bg);
+            color: var(--text-color);
             text-decoration: none;
-            font-family: sans-serif;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 16px; /* Smooth rounded corners */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.1s ease, background-color 0.2s;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 24px; /* Slightly rounder for a modern look */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             text-align: center;
-            padding: 10px;
         }
 
-        /* Feedback when touched/clicked */
-        .square-button:active {
-            transform: scale(0.95);
-            background-color: #0056b3;
+        /* PC Hover Effects */
+        @media (hover: hover) {
+            .square-button:hover {
+                transform: translateY(-5px);
+                background-color: var(--accent-color);
+                color: white;
+                box-shadow: 0 12px 40px rgba(0, 122, 255, 0.3);
+            }
         }
+
+        /* Smartphone Touch Feedback */
+        .square-button:active {
+            transform: scale(0.92);
+            background-color: #e5e5ea;
+        }
+
+        /* Label styling */
+        .square-button span {
+            margin-top: 8px;
+        }
+
+        /* Optional: Add small icons or emojis for better UX */
+        .square-button::before {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .video::before { content: "🎬"; }
+        .music::before { content: "🎵"; }
+        .image::before { content: "🖼️"; }
+
     </style>
 </head>
 <body>
 
     <div class="button-container">
-        <a href="http://35.208.200.11:39247/f/Videos/" target="_blank" class="square-button">video server</a>
-        <a href="http://35.208.200.11:39247/f/Music/" target="_blank" class="square-button">Music</a>
-        <a href="http://35.208.200.11:39247/f/images/" target="_blank" class="square-button">Images</a>
+        <a href="http://35.208.200.11:39247/f/Videos/" target="_blank" class="square-button video">
+            <span>Videos</span>
+        </a>
+        <a href="http://35.208.200.11:39247/f/Music/" target="_blank" class="square-button music">
+            <span>Music</span>
+        </a>
+        <a href="http://35.208.200.11:39247/f/images/" target="_blank" class="square-button image">
+            <span>Images</span>
+        </a>
     </div>
 
 </body>
