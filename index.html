@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .square-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1; /* Keeps it perfectly square */
+            background-color: #007AFF; /* Modern smartphone blue */
+            color: white;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 16px; /* Smooth rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease, background-color 0.2s;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Feedback when touched/clicked */
+        .square-button:active {
+            transform: scale(0.95);
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <a href="https://google.com" target="_blank" class="square-button">Link 1</a>
+        <a href="https://github.com" target="_blank" class="square-button">Link 2</a>
+        <a href="https://example.com" target="_blank" class="square-button">Link 3</a>
+    </div>
+
+</body>
+</html>
